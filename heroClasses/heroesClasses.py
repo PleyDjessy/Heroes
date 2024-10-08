@@ -63,16 +63,31 @@ class MyHero(Hero):
     def __init__(self, name, character_class):
         super().__init__(name)
         self.__character_class = character_class
-        self.skill_list = super().get_skills(character_class)
+        self.__skill_list = super().get_skills(character_class)
+        self.__my_hero_skills = []
+
 
     def get_character_class(self):
-        return ""
+        return self.__character_class
+
+    def get_skill_list(self):
+        return self.__skill_list
+
+    def get_my_hero_skills(self):
+        return self.__my_hero_skills
 
     def add_skill(self):
         if super().get_level() > 0:
-            for skill_give in range(super().get_level()):
-                while True:
-                    print(super().get_skills(self.get_character_class()))
-
+            while True:
+                if len(self.get_my_hero_skills()) == super().get_level():
+                    break
+                else:
+                    choisen_skill = input(f"\nВыберите навык: {self.get_skill_list()}")
+                    if choisen_skill.lower() in self.get_skill_list():
+                        self.__my_hero_skills.append(choisen_skill)
+                        self.__skill_list.remove(choisen_skill)
+                        print(f"\nТекущие навыки: {self.get_my_hero_skills()}")
+                    else:
+                        print "\nНекорректный ввод!"
         else:
             return "Ошибка: уровень вашего героя равен 0"
