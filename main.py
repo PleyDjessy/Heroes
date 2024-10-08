@@ -14,4 +14,4 @@ print(gimli.add_exp(500))
 print()
 
 gendalf = MyHero("Гендальф", "маг")
-print(gendalf.add_exp())
+print(gendalf.add_exp(100))

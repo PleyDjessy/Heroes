@@ -95,10 +95,10 @@ class MyHero(Hero):
                 if len(self.get_my_hero_skills()) == super().get_level():
                     break
                 else:
-                    choisen_skill = input(f"\nВыберите навык: {self.get_skill_list()}")
+                    choisen_skill = input(f"\nВыберите навык: {self.get_skill_list()}\n>>>")
                     if choisen_skill.lower() in self.get_skill_list():
                         self.__my_hero_skills.append(choisen_skill)
-                        self.__skill_list.remove(choisen_skill)
+                        self.__skill_list.remove(choisen_skill.lower())
                         print(f"\nТекущие навыки: {self.get_my_hero_skills()}")
                         break
                     else:
