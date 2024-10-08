@@ -87,7 +87,8 @@ class MyHero(Hero):
                         self.__my_hero_skills.append(choisen_skill)
                         self.__skill_list.remove(choisen_skill)
                         print(f"\nТекущие навыки: {self.get_my_hero_skills()}")
+                        break
                     else:
-                        print "\nНекорректный ввод!"
+                        print("\nНекорректный ввод!")
         else:
             return "Ошибка: уровень вашего героя равен 0"
