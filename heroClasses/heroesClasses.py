@@ -53,7 +53,7 @@ class Hero:
             self.add_skill()
         else:
             self.__level = 0
-        return f"Герой {self.get_name()}, теперь {self.get_level()} уровня, навыки: {', '.join(self.get_my_hero_skills())}"
+        return f"Герой {self.get_name()}, теперь {self.get_level()} уровня, навыки: {', '.join(self.get_my_hero_skills())}."
 
     def add_exp(self, exp):
         """Добавление опыта герою и возврат полученного уровня"""
@@ -92,16 +92,16 @@ class MyHero(Hero):
         """Добавление навыка герою, в зависимости от его уровня и класса. Выбранные навыки удаляются из списка навыков к получению"""
         if super().get_level() > 0:
             while True:
-                if len(self.get_my_hero_skills()) == super().get_level():
-                    break
-                else:
+                while True:
                     choisen_skill = input(f"\nВыберите навык: {self.get_skill_list()}\n>>>")
                     if choisen_skill.lower() in self.get_skill_list():
-                        self.__my_hero_skills.append(choisen_skill)
+                        self.__my_hero_skills.append(choisen_skill.lower())
                         self.__skill_list.remove(choisen_skill.lower())
-                        print(f"\nТекущие навыки: {self.get_my_hero_skills()}")
                         break
                     else:
                         print("\nНекорректный ввод!")
+
+                if len(self.get_my_hero_skills()) == super().get_level():
+                    break
         else:
             return "Ошибка: уровень вашего героя равен 0"
